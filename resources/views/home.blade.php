@@ -10,6 +10,7 @@
     <body>
         <div id="app">
         </div>
+        <!-- files for our app -->
         <script type="text/javascript" src="/js/manifest.js"></script>
         <script type="text/javascript" src="/js/vendor.js"></script>
         <script type="text/javascript" src="/js/app.js"></script>

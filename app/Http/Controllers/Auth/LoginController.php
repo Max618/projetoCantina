@@ -35,7 +35,7 @@ class LoginController extends Controller
             }
         } catch (Exception $e) {
             // credenciais erradas
-            return response()->json(['erro' => 'could_not_create_token'], 500);
+            return response()->json(['erro' => 'could_not_create_token'], 401);
         }
 
         // td ok, pega nivel do usuario e retorna

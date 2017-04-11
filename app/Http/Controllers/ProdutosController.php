@@ -8,6 +8,11 @@ use Illuminate\Pagination\Paginator;
 
 class ProdutosController extends CantinaController
 {
+    public function __construct()
+    {
+        //$this->middleware('cantina')->except('show','showLunch');
+    }
+
     public function formNewProduto()
     {
         return response()->json('mostrar form do novo produto');

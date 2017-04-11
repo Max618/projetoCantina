@@ -7,6 +7,11 @@ use Canteen;
 
 class PedidosController extends Controller
 {
+    public function __construct()
+    {
+        //$this->middleware('cantina');
+    }
+    
     public function getAll() {
         $pedidos  = Canteen\Pedido::where('type', false)->get();
         $array = new \ArrayObject();

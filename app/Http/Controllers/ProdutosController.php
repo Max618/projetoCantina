@@ -62,12 +62,17 @@ class ProdutosController extends CantinaController
     }
 
     public function show(){
-        $produtos = Produtos::where('lunch', false)->get();
-        return response()->json($produtos);
+        $lanches = Produto::select('id','name','price')->where('type', 1)->get();
+        $outros = Produto::select('id','name','price')->where('type', 3)->get();
+        $retorno = [
+            'lanches' => $lanches,
+            'outros' => $outros,
+        ];
+        return response()->json($retorno);
     }
 
     public function showLunch(){
-        $produtos = Produtos::where('lunch', true)->get();
+        $produtos = Produto::where('lunch', true)->get();
         return response()->json($produtos);
     }
 }

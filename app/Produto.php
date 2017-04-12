@@ -7,10 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Produto extends Model
 {
     protected $fillable = [
-        'name', 'amount', 'price',
-    ];
-
-    protected $casts = [
-        'lunch' => 'boolean',
+        'name', 'amount', 'price', 'type',
     ];
 }

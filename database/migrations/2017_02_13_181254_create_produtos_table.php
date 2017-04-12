@@ -18,7 +18,7 @@ class CreateProdutosTable extends Migration
             $table->string('name');
             $table->integer('amount');
             $table->float('price', 6, 2);
-            $table->boolean('lunch');
+            $table->integer('type', 1);
             $table->timestamps();
         });
     }

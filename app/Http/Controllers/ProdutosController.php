@@ -72,7 +72,7 @@ class ProdutosController extends CantinaController
     }
 
     public function showLunch(){
-        $produtos = Produto::where('lunch', true)->get();
+        $produtos = Produto::select('id','name','price')->where('type', 2)->get();
         return response()->json($produtos);
     }
 }

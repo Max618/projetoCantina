@@ -2,8 +2,6 @@
 
 Route::post('/login', 'auth\LoginController@login');
 
-
-
 Route::group(['prefix' => 'cantina'], function () {
     Route::post('/', 'CantinaController@index')->name('cantina.index');
     Route::post('produtos/novo', 'ProdutosController@formNewProduto')->name('produto.new');

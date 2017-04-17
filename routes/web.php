@@ -10,14 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('home');
 });
-Route::get('/login', function () {
-    return redirect('/#/login');
-});
-Route::get('/home', function () {
-    return redirect('/#/home');
-})->middleware('guest');

@@ -16,6 +16,9 @@ Route::group(['prefix' => 'cantina'], function () {
 });
 
 Route::group(['prefix' => 'responsavel'], function () {
+    Route::get('/', 'ResponsavelController@index')->name('responsavel.index');
+    Route::post('/lanches', 'ProdutosController@show')->name('produto.show');
+    Route::get('/refeicoes', 'ProdutosController@showLunch')->name('produto.showLunch');
     Route::post('/', 'ResponsavelController@index')->name('responsavel.index');
     Route::post('/lanches', 'ProdutosController@show')->name('produto.show');
     Route::post('/refeicoes', 'ProdutosController@showLunch')->name('produto.showLunch');

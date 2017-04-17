@@ -12,6 +12,7 @@ Route::group(['prefix' => 'cantina'], function () {
     Route::put('produtos/{id}', 'ProdutosController@update')->name('produto.update');
     Route::delete('produtos/{id}', 'ProdutosController@destroy')->name('produto.destroy');
     Route::get('pedidos', 'PedidosController@getAll')->name('pedido.all');
+    Route::any('pedido/create', 'PedidosController@create')->name('pedido.create');
 });
 
 Route::group(['prefix' => 'responsavel'], function () {

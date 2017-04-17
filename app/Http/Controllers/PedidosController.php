@@ -27,4 +27,9 @@ class PedidosController extends Controller
         }
         return response()->json($array);
     }
+
+    public function create(Request $request)
+    {
+        return $request;
+    }
 }

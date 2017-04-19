@@ -35,7 +35,16 @@ class LoginController extends Controller
         if($nivel == 2)
         {
             $filhos = $this->pegarFilhos($user);
-            return response()->json(['nivel' => $nivel,'user' => $user, 'filhos' => $filhos]);
+            $array = new \ArrayObject();
+            foreach ($filhos as $filho) {
+                //dd($filho->user['name']);
+                $array->append([
+                'id' => $filho->id,
+                'nome' => $filho->user['name'],
+                'turma' => $filho->turma,
+                ]);
+            }
+            return response()->json(['nivel' => $nivel,'user' => $user, 'filhos' => $array]);
         }
         return response()->json(['nivel' => $nivel,'user' => $user]);
     }

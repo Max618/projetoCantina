@@ -4,6 +4,7 @@ namespace Canteen\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Canteen;
+use Illuminate\Support\Facades\Auth;
 
 class PedidosController extends Controller
 {
@@ -30,6 +31,26 @@ class PedidosController extends Controller
 
     public function create(Request $request)
     {
-        return $request;
+        //return Auth::user()->name;
+        $user = $request->only('user');
+        $pedidos = $request->only('pedido');
+        //return response()->json($pedidos);
+        try {
+            /*$pedido = Canteen\Pedido::create([
+                'final_price' => $pedidos[0],
+                'aluno_id' => $pedidos[2],
+                'list' => $pedidos[1][0]
+            ]);*/
+            $pedido = new Canteen\Pedido;
+            $pedido->fill($request->only('pedido'));
+            $pedido->user_id = $user->id;
+            $pedido->save();
+            //$pedido = $user->pedidos;
+            return response()->json(['sucesso' => 'Pedido realizado']);
+        }
+        catch (\Exception $e)
+        {
+            return $e;
+        }
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pedido extends Model
 {
     protected $fillable = [
-        'aluno_id', 'final_price', 'list',
+        'aluno_id', 'final_price', 'list', 'user_id',
     ];
     protected $casts = [
         'type' => 'boolean',

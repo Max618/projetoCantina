@@ -27,11 +27,14 @@ class LoginController extends Controller
             // credenciais erradas
             return response()->json(['erro' => 'could_not_create_token'], 401);
         }
-
         // td ok, pega nivel do usuario e retorna
-        $nivel = Canteen\User::where('email', $email)->value('nivel');
+        $user = Canteen\User::where('email', $email)->first();
+        $nivel = $user->nivel;
+        //$user = Canteen\User::where('email', $email)->firstOrFail();
         session(['nivel' => $nivel]);
-        return response()->json(['nivel' => $nivel]);
+        session(['user' => $user]);
+        return response()->json(['nivel' => $nivel,'user' => $user]);
     }
+
 
 }

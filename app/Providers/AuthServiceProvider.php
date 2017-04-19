@@ -14,7 +14,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'Canteen\Model' => 'Canteen\Policies\ModelPolicy',
+       // 'Canteen\Model' => 'Canteen\Policies\ModelPolicy',
     ];
 
     /**
@@ -24,8 +24,6 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerPolicies();
-        Passport::routes();
         //
     }
 }

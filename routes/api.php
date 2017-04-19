@@ -1,4 +1,5 @@
 <?php
+Auth::routes();
 
 Route::post('/login', 'auth\LoginController@login');
 

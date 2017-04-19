@@ -11,7 +11,15 @@
 |
 */
 
+use Canteen\User;
+
 Route::get('/', function () {
     return view('index');
 });
 //Auth::routes();
+Route::get('/teste', function() {
+
+	$user = User::find(13);
+	$filhos = $user->filhos;
+	dd($filhos);
+});

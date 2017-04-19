@@ -17,14 +17,15 @@ class Aluno extends Model
     }
 
     // UM ALUNO VEM DE UM USER
-    public function user()
+    /*public function user()
     {
         return $this->belongsTo('Canteen\User');
-    }
+    }*/
 
     // UM ALUNO TEM MUITOS PEDIDOS
     public function pedidos()
     {
         return $this->hasMany('Canteen\Pedido');
     }
+
 }

@@ -28,10 +28,10 @@ class User extends Authenticatable
     ];
 
     // UM USER TEM UM ALUNO
-    public function aluno()
+    /*public function aluno()
     {
         return $this->hasOne('Canteen\Aluno');
-    }
+    }*/
 
     // UM USER TEM MUITOS RELACIONAMENTOS
     public function relacionamentos()
@@ -45,5 +45,8 @@ class User extends Authenticatable
         return $this->hasMany('Canteen\Pedido');
     }
 
-
+    public function filhos()
+    {
+        return $this->belongsToMany('Canteen\Aluno', 'relacionamentos');
+    }
 }

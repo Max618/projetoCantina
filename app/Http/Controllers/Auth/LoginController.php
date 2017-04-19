@@ -30,11 +30,31 @@ class LoginController extends Controller
         // td ok, pega nivel do usuario e retorna
         $user = Canteen\User::where('email', $email)->first();
         $nivel = $user->nivel;
-        //$user = Canteen\User::where('email', $email)->firstOrFail();
         session(['nivel' => $nivel]);
         session(['user' => $user]);
-        return response()->json(['nivel' => $nivel,'user' => $user]);
+        if($nivel == 2)
+        {
+            $filhos = $this->pegarFilhos($user);
+        }
+        return response()->json(['nivel' => $nivel,'user' => $user, 'filhos' => $filhos]);
     }
 
-
+    private function pegarFilhos(Canteen\User $user)
+    {
+        $relacionamentos = $user->relacionamentos;
+        $filhos[] = null;
+        foreach ($relacionamentos as $relacionamento)
+        {
+            $alunos[] = $relacionamento->aluno_id;
+        }
+        foreach ($alunos as $aluno)
+        {
+            $filhos_id[] = $aluno->user_id;
+        }
+        foreach ($filhos_id as $filho_id)
+        {
+            $filhos[] = $filho_id->user;
+        }
+        return $filhos;
+    }
 }

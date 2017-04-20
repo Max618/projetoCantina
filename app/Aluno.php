@@ -19,7 +19,7 @@ class Aluno extends Model
     // UM ALUNO VEM DE UM USER
     public function user()
     {
-        return $this->belongsTo('Canteen\User');
+        return $this->hasOne('Canteen\User','id');
     }
 
     // UM ALUNO TEM MUITOS PEDIDOS
@@ -27,4 +27,6 @@ class Aluno extends Model
     {
         return $this->hasMany('Canteen\Pedido');
     }
+
+
 }

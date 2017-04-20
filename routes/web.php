@@ -11,7 +11,25 @@
 |
 */
 
+use Canteen\User;
+
 Route::get('/', function () {
     return view('index');
 });
 //Auth::routes();
+Route::get('/teste', function() {
+
+	$user = User::find(13);
+	$filhos = $user->filhos;
+	//dd($filhos);
+	$array = new \ArrayObject();
+	foreach ($filhos as $filho) {
+		//dd($filho->user['name']);
+		$array->append([
+		'id' => $filho->id,
+		'nome' => $filho->user['name'],
+		'turma' => $filho->turma,
+		]);
+	}
+	print_r($array);
+});

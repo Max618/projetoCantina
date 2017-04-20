@@ -35,26 +35,22 @@ class LoginController extends Controller
         if($nivel == 2)
         {
             $filhos = $this->pegarFilhos($user);
+            $array = new \ArrayObject();
+            foreach ($filhos as $filho) {
+                //dd($filho->user['name']);
+                $array->append([
+                'id' => $filho->id,
+                'nome' => $filho->user['name'],
+                'turma' => $filho->turma,
+                ]);
+            }
+            return response()->json(['nivel' => $nivel,'user' => $user, 'filhos' => $array]);
         }
-        return response()->json(['nivel' => $nivel,'user' => $user, 'filhos' => $filhos]);
+        return response()->json(['nivel' => $nivel,'user' => $user]);
     }
 
     private function pegarFilhos(Canteen\User $user)
     {
-        $relacionamentos = $user->relacionamentos;
-        $filhos[] = null;
-        foreach ($relacionamentos as $relacionamento)
-        {
-            $alunos[] = $relacionamento->aluno_id;
-        }
-        foreach ($alunos as $aluno)
-        {
-            $filhos_id[] = $aluno->user_id;
-        }
-        foreach ($filhos_id as $filho_id)
-        {
-            $filhos[] = $filho_id->user;
-        }
-        return $filhos;
+        return $user->filhos;
     }
 }

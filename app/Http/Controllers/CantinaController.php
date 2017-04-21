@@ -10,9 +10,5 @@ class CantinaController extends Controller
 	{
 		//$this->middleware('cantina');
 	}
-    public function index()
-    {
-        return response()->json('pagina principal cantina');
-    }
 }
 

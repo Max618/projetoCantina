@@ -13,11 +13,6 @@ class ProdutosController extends CantinaController
         //$this->middleware('cantina')->except('show','showLunch');
     }
 
-    public function formNewProduto()
-    {
-        return response()->json('mostrar form do novo produto');
-    }
-
     public function create(Request $request)
     {
         try {

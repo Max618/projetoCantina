@@ -14,9 +14,7 @@
 use Canteen\User;
 
 Route::get('/', function () {
-	//$user = Canteen\User::find(13);
-	//Debugbar::info($user);
-    return view('index');
+    return view('home');
 });
 //Auth::routes();
 Route::get('/teste', function() {

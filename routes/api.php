@@ -4,8 +4,6 @@ Auth::routes();
 Route::post('/login', 'auth\LoginController@login');
 
 Route::group(['prefix' => 'cantina'], function () {
-    Route::post('/', 'CantinaController@index')->name('cantina.index');
-    Route::post('produtos/novo', 'ProdutosController@formNewProduto')->name('produto.new');
     Route::post('produtos', 'ProdutosController@create')->name('produto.create');
     Route::get('produtos/{id}/editar', 'ProdutosController@edit')->name('produto.edit');
     Route::put('produtos/{id}', 'ProdutosController@update')->name('produto.update');
@@ -15,9 +13,7 @@ Route::group(['prefix' => 'cantina'], function () {
 });
 
 Route::group(['prefix' => 'responsavel'], function () {
-    Route::get('/', 'ResponsavelController@index')->name('responsavel.index');
-    Route::post('/lanches', 'ProdutosController@show')->name('produto.show');
-    Route::get('/refeicoes', 'ProdutosController@showLunch')->name('produto.showLunch');
+    Route::post('pedido/create', 'PedidosController@create')->name('pedido.create');
     Route::post('/', 'ResponsavelController@index')->name('responsavel.index');
     Route::post('/lanches', 'ProdutosController@show')->name('produto.show');
     Route::post('/refeicoes', 'ProdutosController@showLunch')->name('produto.showLunch');

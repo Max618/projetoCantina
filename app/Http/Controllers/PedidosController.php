@@ -38,9 +38,17 @@ class PedidosController extends Controller
             $pedido->list = json_encode($request->only('list'));
             $pedido->user_id = implode('', $request->only('user'));
             $pedido->type = 0;
-
+            //return $request->only('list');
+            $lista = $request->only('list'); 
             if($pedido->save())
             {
+                foreach ($lista as $produtoLista) {
+                    foreach ($produtoLista as $produtoL) {
+                        $produto = Canteen\Produto::find($produtoL['id']);
+                        $produto->amount-=$produtoL['qtde'];
+                        $produto->save();
+                    }
+                }
                 return response()->json(['sucesso' => 'Pedido realizado']);
             }
             return response()->json(['erro' => 'Erro ao enviar os dados']);

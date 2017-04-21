@@ -9,9 +9,6 @@ class Pedido extends Model
     protected $fillable = [
         'aluno_id', 'final_price', 'list', 'user_id', 'delivery_date', 'type'
     ];
-    protected $casts = [
-        'type' => 'boolean',
-    ];
 
     // UM PEDIDO VEM DE UM ALUNO, MUITOS PEDIDOS TEM UM ALUNO
     public function aluno()

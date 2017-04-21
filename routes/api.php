@@ -8,12 +8,14 @@ Route::group(['prefix' => 'cantina'], function () {
     Route::get('produtos/{id}/editar', 'ProdutosController@edit')->name('produto.edit');
     Route::put('produtos/{id}', 'ProdutosController@update')->name('produto.update');
     Route::delete('produtos/{id}', 'ProdutosController@destroy')->name('produto.destroy');
-    Route::get('pedidos', 'PedidosController@getAll')->name('pedido.all');
+    Route::post('pedidos', 'PedidosController@show')->name('pedido.show');
+    Route::post('pedidos/refeicoes', 'PedidosController@showLunch')->name('pedido.showLunch');
     Route::post('pedido/create', 'PedidosController@create')->name('pedido.create');
 });
 
 Route::group(['prefix' => 'responsavel'], function () {
     Route::post('pedido/create', 'PedidosController@create')->name('pedido.create');
+    Route::post('refeicao/create', 'PedidosControler@createLunch')->name('lunch.create');
     Route::post('/', 'ResponsavelController@index')->name('responsavel.index');
     Route::post('/lanches', 'ProdutosController@show')->name('produto.show');
     Route::post('/refeicoes', 'ProdutosController@showLunch')->name('produto.showLunch');

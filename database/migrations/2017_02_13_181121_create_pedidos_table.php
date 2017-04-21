@@ -20,7 +20,7 @@ class CreatePedidosTable extends Migration
             $table->json('list');
             $table->float('final_price', 4, 2);
             $table->date('delivery_date');
-            $table->boolean('type')->default(false);
+            $table->smallInteger('type');
             $table->timestamps();
         });
     }

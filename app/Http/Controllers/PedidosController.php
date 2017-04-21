@@ -32,18 +32,47 @@ class PedidosController extends Controller
     public function create(Request $request)
     {
         //return Auth::user()->name;
-        $user = $request->only('user');
-        $pedidos = $request->only('pedido');
+        //return $request;
+        //return $request;
+        /*$pedido = new Canteen\Pedido;
+        $pedido->fill($request->only('final_price','aluno_id','user'));
+        $pedido->list = json_encode($request->only('list'));
+        return $pedido;*/
+        $user = Canteen\User::find($request->only('user'));
+        $lista = $request->only('list');
+        $preco = $request->only('final_price');
+        $aluno_id = $request->only('aluno_id');
+        $user_id = $request->only('user');
+        //return $user;
+        //return $preco;
         //return response()->json($pedidos);
+        try{
+            $pedidoF = $user->pedidos()->create([
+                    'final_price' => $request->only('final_price'),
+                    'aluno_id' => $request->only('aluno_id'),
+                    'list' => $request->only('list'),
+                ]);
+            return $pedidoF;
+        } catch(\Exception $e){
+            return $e;  
+        }
+        //return $user_id;
         try {
             /*$pedido = Canteen\Pedido::create([
-                'final_price' => $pedidos[0],
-                'aluno_id' => $pedidos[2],
-                'list' => $pedidos[1][0]
+                'final_price' => $preco,
+                'aluno_id' => $aluno_id,
+                'list' => $lista,
+                'user_id' => $user_id,
             ]);*/
             $pedido = new Canteen\Pedido;
-            $pedido->fill($request->only('pedido'));
-            $pedido->user_id = $user->id;
+            //$pedido->fill($request->only('list','final_price','aluno_id','user'));
+            //return $pedido;
+            $pedido->fill($request->only('final_price','aluno_id'));
+            $pedido->list = json_encode($request->only('list'));
+            $pedido->user_id = $user_id;
+            //return $pedido;
+
+            //$pedido->user_id = $user->id;
             $pedido->save();
             //$pedido = $user->pedidos;
             return response()->json(['sucesso' => 'Pedido realizado']);

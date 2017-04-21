@@ -14,6 +14,8 @@
 use Canteen\User;
 
 Route::get('/', function () {
+	//$user = Canteen\User::find(13);
+	//Debugbar::info($user);
     return view('index');
 });
 //Auth::routes();
@@ -33,3 +35,5 @@ Route::get('/teste', function() {
 	}
 	print_r($array);
 });
+
+//Route::get('cantina/pedido/create', 'PedidosController@create')->name('pedido.create');

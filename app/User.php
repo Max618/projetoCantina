@@ -42,7 +42,7 @@ class User extends Authenticatable
     // UM User TEM MUITOS PEDIDOS
     public function pedidos()
     {
-        return $this->hasMany('Canteen\Pedido');
+        return $this->hasMany('Canteen\Pedido','user_id');
     }
 
     public function filhos()

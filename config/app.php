@@ -167,6 +167,7 @@ return [
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
+        //Barryvdh\Debugbar\ServiceProvider::class,
        // Tymon\JWTAuth\Providers\JWTAuthServiceProvider,
         //Laravel\Passport\PassportServiceProvider::class,
 
@@ -229,6 +230,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         //'JWTAuth' = > Tymon\JWTAuth\Facades\JWTAuth,
         //'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory,
+        //'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];

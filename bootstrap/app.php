@@ -26,6 +26,12 @@ $app = new Illuminate\Foundation\Application(
 |
 */
 
+/*if (env('APP_DEBUG')) {
+ $app->register(Barryvdh\Debugbar\LumenServiceProvider::class);
+}*/
+//$app->configure('debugbar');
+
+
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
     Canteen\Http\Kernel::class

@@ -44,7 +44,7 @@ class LoginController extends Controller
                 'turma' => $filho->turma,
                 ]);
             }
-            return response()->json(['nivel' => $nivel,'user' => $user, 'filhos' => $array]);
+            return response()->json(['nivel' => $nivel,'user' => $user->id, 'filhos' => $array]);
         }
         return response()->json(['nivel' => $nivel,'user' => $user]);
     }

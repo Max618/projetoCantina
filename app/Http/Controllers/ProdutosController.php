@@ -62,8 +62,8 @@ class ProdutosController extends CantinaController
     }
 
     public function show(){
-        $lanches = Produto::select('id','name','price')->where('type', 1)->get();
-        $outros = Produto::select('id','name','price')->where('type', 3)->get();
+        $lanches = Produto::select('id','name','price')->where('type', 1)->where('amount', '>', 0)->get();
+        $outros = Produto::select('id','name','price')->where('type', 3)->where('amount', '>', 0)->get();
         $retorno = [
             'lanches' => $lanches,
             'outros' => $outros,

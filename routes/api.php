@@ -10,7 +10,7 @@ Route::group(['prefix' => 'cantina'], function () {
     Route::delete('produtos/{id}', 'ProdutosController@destroy')->name('produto.destroy');
     Route::post('pedidos', 'PedidosController@show')->name('pedido.show');
     Route::post('pedidos/refeicoes', 'PedidosController@showLunch')->name('pedido.showLunch');
-    Route::post('pedido/create', 'PedidosController@create')->name('pedido.create');
+    //Route::post('pedido/create', 'PedidosController@create')->name('pedido.create');
 });
 
 Route::group(['prefix' => 'responsavel'], function () {

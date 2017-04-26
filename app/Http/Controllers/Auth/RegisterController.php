@@ -6,6 +6,7 @@ use Canteen\User;
 use Canteen\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -27,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    //protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -45,12 +46,13 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+    protected function validator(Request $data)
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6',
+            'nivel' => 'required',
         ]);
     }
 
@@ -60,12 +62,32 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function create(array $data)
+    protected function create(Request $data)
     {
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'nivel' => $data['nivel'],
         ]);
+    }
+
+    public function register(Request $request)
+    {
+
+        //return $request;
+        try{
+            User::create([
+                'name' => $request->only('name'),
+                'email' => $request->only('email'),
+                'password' => bcrypt($request->only('password')),
+                'nivel' => $request->only('nivel'),
+            ]);
+            return "foi";
+        }
+        catch(\Exception $e)
+        {
+            return $e;
+        }
     }
 }

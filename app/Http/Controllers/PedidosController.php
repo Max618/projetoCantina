@@ -10,11 +10,11 @@ class PedidosController extends Controller
 {
     public function __construct()
     {
-        //$this->middleware('cantina');
+        //$this->middleware('cantina')->except('create','createLunch');
     }
     
     public function show() {
-        $pedidos  = Canteen\Pedido::where('type', 0)->get();
+        $pedidos  = Canteen\Pedido::where('type', 0)->orderBy('delivery_date', 'desc')->get();
         $array = new \ArrayObject();
         foreach ($pedidos as $pedido){
             $tabelaAluno = Canteen\Pedido::find($pedido['id'])->aluno;
@@ -30,7 +30,7 @@ class PedidosController extends Controller
     }
 
     public function showLunch() {
-        $pedidos  = Canteen\Pedido::where('type', 1)->get();
+        $pedidos  = Canteen\Pedido::where('type', 1)->orderBy('delivery_date', 'desc')->get();
         $array = new \ArrayObject();
         foreach ($pedidos as $pedido){
             $tabelaAluno = Canteen\Pedido::find($pedido['id'])->aluno;
@@ -47,10 +47,12 @@ class PedidosController extends Controller
 
     public function create(Request $request)
     {
+        //return $request->only('delivery_date');
         try 
         {
             $pedido = new Canteen\Pedido();
-            $pedido->fill($request->only('final_price','aluno_id'));
+            //$pedido->fill($request->only('final_price','aluno_id'));
+            $pedido->fill($request->only('final_price','aluno_id','delivery_date'));
             $pedido->list = json_encode($request->only('list'));
             $pedido->user_id = implode('', $request->only('user'));
             $pedido->type = 0;

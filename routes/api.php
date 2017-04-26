@@ -2,6 +2,7 @@
 Auth::routes();
 
 Route::post('/login', 'auth\LoginController@login');
+Route::post('/register', 'auth\RegisterController@register');
 
 Route::group(['prefix' => 'cantina'], function () {
     Route::post('produtos', 'ProdutosController@create')->name('produto.create');
@@ -15,7 +16,7 @@ Route::group(['prefix' => 'cantina'], function () {
 
 Route::group(['prefix' => 'responsavel'], function () {
     Route::post('pedido/create', 'PedidosController@create')->name('pedido.create');
-    Route::post('refeicao/create', 'PedidosControler@createLunch')->name('lunch.create');
+    Route::post('refeicao/create', 'PedidosController@createLunch')->name('lunch.create');
     Route::post('/', 'ResponsavelController@index')->name('responsavel.index');
     Route::post('/lanches', 'ProdutosController@show')->name('produto.show');
     Route::post('/refeicoes', 'ProdutosController@showLunch')->name('produto.showLunch');

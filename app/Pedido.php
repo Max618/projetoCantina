@@ -10,6 +10,10 @@ class Pedido extends Model
         'aluno_id', 'final_price', 'list', 'user_id', 'delivery_date', 'type'
     ];
 
+    protected $casts = [
+        //'delivery_date' => 'date',
+    ];
+
     // UM PEDIDO VEM DE UM ALUNO, MUITOS PEDIDOS TEM UM ALUNO
     public function aluno()
     {

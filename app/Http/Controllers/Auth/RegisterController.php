@@ -21,7 +21,7 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+    //use RegistersUsers;
 
     /**
      * Where to redirect users after registration.
@@ -74,16 +74,14 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-
-        //return $request;
+        $senha = $request->get('password');
         try{
-            User::create([
-                'name' => $request->only('name'),
-                'email' => $request->only('email'),
-                'password' => bcrypt($request->only('password')),
-                'nivel' => $request->only('nivel'),
-            ]);
-            return "foi";
+            $novo = new User();
+            $novo->fill($request->only('name','email'));
+            $novo->password = bcrypt($senha);
+            $novo->nivel = $request->get('nivel');
+            $novo->save();
+            return response()->json(['sucesso' => 'usuario criado com sucesso']);
         }
         catch(\Exception $e)
         {

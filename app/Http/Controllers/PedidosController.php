@@ -24,6 +24,7 @@ class PedidosController extends Controller
                     'turma' => Canteen\Pedido::find($pedido['id'])->aluno['turma'],
                     'pedidos' => $pedido['list'],
                     'preco_final' => $pedido['final_price'],
+                    'delivery_date' => $pedido['delivery_date'],
                 ]);
         }
         return response()->json($array);
@@ -40,6 +41,7 @@ class PedidosController extends Controller
                 'turma' => Canteen\Pedido::find($pedido['id'])->aluno['turma'],
                 'pedidos' => $pedido['list'],
                 'preco_final' => $pedido['final_price'],
+                'delivery_date' => $pedido['delivery_date'],
             ]);
         }
         return response()->json($array);

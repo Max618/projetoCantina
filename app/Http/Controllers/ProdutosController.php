@@ -20,7 +20,7 @@ class ProdutosController extends CantinaController
                 'name' => $request->input('name'),
                 'amount' => $request->input('amount'),
                 'price' => $request->input('price'),
-                'lunch' => $request->only('lunch'),
+                'type' => $request->only('type'),
             ];
             $produto = new Produto();
             $produto->create($novo);

@@ -31,7 +31,7 @@ class PedidosController extends Controller
     }
 
     public function showLunch() {
-        $pedidos  = Canteen\Pedido::where('type', 1)->orderBy('delivery_date', 'desc')->get();
+        $pedidos  = Canteen\Pedido::where('type', 2)->orderBy('delivery_date', 'desc')->get();
         $array = new \ArrayObject();
         foreach ($pedidos as $pedido){
             $tabelaAluno = Canteen\Pedido::find($pedido['id'])->aluno;
@@ -81,13 +81,13 @@ class PedidosController extends Controller
 
     public function createLunch(Request $request)
     {
+    	return $request;
         try {
             $pedido = new Canteen\Pedido;
             $pedido->fill($request->only('final_price','aluno_id'));
             $pedido->list = json_encode($request->only('list'));
             $pedido->user_id = implode('', $request->only('user'));
             $pedido->type = 2;
-            //return $request->only('list');
             $lista = $request->only('list');
             if($pedido->save())
             {

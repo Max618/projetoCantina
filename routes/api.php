@@ -10,6 +10,7 @@ Route::group(['prefix' => 'cantina'], function () {
     Route::put('produtos/{id}', 'ProdutosController@update')->name('produto.update');
     Route::delete('produtos/{id}', 'ProdutosController@destroy')->name('produto.destroy');
     Route::post('pedidos', 'PedidosController@show')->name('pedido.show');
+    Route::post('produtos/all', 'ProdutosController@getAll')->name('pedido.all');
     Route::post('pedidos/refeicoes', 'PedidosController@showLunch')->name('pedido.showLunch');
     //Route::post('pedido/create', 'PedidosController@create')->name('pedido.create');
 });

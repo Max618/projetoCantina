@@ -70,4 +70,10 @@ class ProdutosController extends CantinaController
         $produtos = Produto::select('id','name','price')->where('type', 2)->get();
         return response()->json($produtos);
     }
+
+    public function getAll()
+    {
+        $produtos = Produto::all();
+        return response()->json($produtos);
+    }
 }

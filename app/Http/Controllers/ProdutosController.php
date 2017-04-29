@@ -47,12 +47,6 @@ class ProdutosController extends CantinaController
         }
     }
 
-    public function edit($id)
-    {
-        $produto = Produto::find($id);
-        return redirect()->json(compact(produto));
-    }
-
     public function destroy($id)
     {
         $produto = Produto::find($id);

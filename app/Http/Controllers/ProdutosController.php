@@ -13,7 +13,7 @@ class ProdutosController extends CantinaController
         //$this->middleware('cantina')->except('show','showLunch');
     }
 
-    public function create(Request $request)
+    public function store(Request $request)
     {
         try {
             $novo = [

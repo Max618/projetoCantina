@@ -7,7 +7,7 @@ Route::post('/register', 'auth\RegisterController@register');
 Route::group(['prefix' => 'cantina'], function () {
     Route::put('produtos', 'ProdutosController@store')->name('produto.store');
     Route::put('produtos/{id}', 'ProdutosController@update')->name('produto.update');
-    Route::delete('produtos/{id}', 'ProdutosController@destroy')->name('produto.destroy');
+    Route::delete('produtos/{id}/delete', 'ProdutosController@destroy')->name('produto.destroy');
     Route::post('pedidos', 'PedidosController@show')->name('pedido.show');
     Route::post('produtos/all', 'ProdutosController@getAll')->name('pedido.all');
     Route::post('pedidos/refeicoes', 'PedidosController@showLunch')->name('pedido.showLunch');

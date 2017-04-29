@@ -44,11 +44,14 @@ class ProdutosController extends CantinaController
 
     public function destroy($id)
     {
-        $produto = Produto::find($id);
-        if($produto->delete()) {
-            return response()->json(['success' => 'produto deletado com sucesso']);
-        }else {
-            return response()->json(['erro' => 'falha ao deletar o produto']);
+        try{
+            $produto = Produto::find($id);
+            $produto->type = 5;
+            $produto->save();
+        }
+        catch (\Exception $e)
+        {
+            return $e;
         }
     }
 
@@ -69,7 +72,7 @@ class ProdutosController extends CantinaController
 
     public function getAll()
     {
-        $produtos = Produto::all();
+        $produtos = Produto::where('type','<>',5)->get();
         return response()->json($produtos);
     }
 }

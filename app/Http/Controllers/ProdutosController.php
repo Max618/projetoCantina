@@ -72,7 +72,14 @@ class ProdutosController extends CantinaController
 
     public function getAll()
     {
-        $produtos = Produto::where('type','like', '5%')->get();
+        try{
+        $produtos = Produto::where('type','not like', '5%')->get();
+        return $produtos;
         return response()->json($produtos);
+        }
+        catch(\Exception $e)
+        {
+            return $e;
+        }
     }
 }

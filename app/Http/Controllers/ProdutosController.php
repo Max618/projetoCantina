@@ -39,7 +39,7 @@ class ProdutosController extends CantinaController
             $produto = Produto::find($id);
             $produto->fill($request->only('name', 'amount', 'price', 'type'));
             $produto->save();
-            return redirect()->json(['success' => 'Produto salvo com sucesso!']);
+            return response()->json(['success' => 'Produto salvo com sucesso!']);
         }
         catch (\Exception $e)
         {

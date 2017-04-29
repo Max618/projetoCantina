@@ -46,7 +46,7 @@ class ProdutosController extends CantinaController
     {
         try{
             $produto = Produto::find($id);
-            $produto->type = 5;
+            $produto->type += 50;
             $produto->save();
         }
         catch (\Exception $e)
@@ -72,7 +72,7 @@ class ProdutosController extends CantinaController
 
     public function getAll()
     {
-        $produtos = Produto::where('type','<>',5)->get();
+        $produtos = Produto::where('type','like', '5%')->get();
         return response()->json($produtos);
     }
 }

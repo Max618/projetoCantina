@@ -5,7 +5,7 @@ Route::post('/login', 'auth\LoginController@login');
 Route::post('/register', 'auth\RegisterController@register');
 
 Route::group(['prefix' => 'cantina'], function () {
-    Route::post('produtos', 'ProdutosController@create')->name('produto.create');
+    Route::post('produtos', 'ProdutosController@store')->name('produto.store');
     Route::put('produtos/{id}', 'ProdutosController@update')->name('produto.update');
     Route::delete('produtos/{id}', 'ProdutosController@destroy')->name('produto.destroy');
     Route::post('pedidos', 'PedidosController@show')->name('pedido.show');

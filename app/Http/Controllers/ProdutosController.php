@@ -16,16 +16,11 @@ class ProdutosController extends CantinaController
     public function store(Request $request)
     {
         try {
-            $novo = [
-                'name' => $request->input('name'),
-                'amount' => $request->input('amount'),
-                'price' => $request->input('price'),
-                'type' => $request->only('type'),
-            ];
             $produto = new Produto();
-            $produto->create($novo);
+            $produto->fill($request->only('name','amount','price','type'));
+            $produto->save();
 
-            return redirect()->json(['success' => 'Produto inserido com Sucesso!']);
+            return response()->json(['success' => 'Produto inserido com Sucesso!']);
         }
         catch (\Exception $e){
             return $e;

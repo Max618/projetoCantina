@@ -28,7 +28,7 @@ class ProdutosController extends CantinaController
             return redirect()->json(['success' => 'Produto inserido com Sucesso!']);
         }
         catch (\Exception $e){
-            return response()->json(['erro' => 'produto_nao_criado'], 500);
+            return $e;
         }
     }
 

@@ -34,10 +34,17 @@ class ProdutosController extends CantinaController
 
     public function update(Request $request, $id)
     {
-        $produto = Produto::find($id);
-        $produto->fill($request->only('name', 'amount', 'price', 'lunch'));
-        $produto->save();
-        return redirect()->json(['success' => 'Produto salvo com sucesso!']);
+        try
+        {
+            $produto = Produto::find($id);
+            $produto->fill($request->only('name', 'amount', 'price', 'trype'));
+            $produto->save();
+            return redirect()->json(['success' => 'Produto salvo com sucesso!']);
+        }
+        catch (\Exception $e)
+        {
+            return $e;
+        }
     }
 
     public function edit($id)

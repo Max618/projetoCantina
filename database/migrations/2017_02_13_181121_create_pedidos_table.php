@@ -17,8 +17,8 @@ class CreatePedidosTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('aluno_id');
-            $table->json('list');
-            $table->float('final_price', 4, 2);
+            $table->string('list',500);
+            $table->float('final_price');
             $table->date('delivery_date');
             $table->smallInteger('type');
             $table->timestamps();
